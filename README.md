@@ -1,2 +1,0 @@
-# HibernateOrnek-
-PD2
