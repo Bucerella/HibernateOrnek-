@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08.May.2017 17:39:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.DiscountCode" table="discount_code" catalog="sample" optimistic-lock="version">
+        <id name="discountCode" type="char">
+            <column name="discount_code" length="1" />
+            <generator class="assigned" />
+        </id>
+        <property name="rate" type="big_decimal">
+            <column name="rate" precision="4" />
+        </property>
+        <set name="customers" table="customer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="discount_code" length="1" not-null="true" />
+            </key>
+            <one-to-many class="model.Customer" />
+        </set>
+    </class>
+</hibernate-mapping>

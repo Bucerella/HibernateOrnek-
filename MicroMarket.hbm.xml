@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08.May.2017 17:39:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.MicroMarket" table="micro_market" catalog="sample" optimistic-lock="version">
+        <id name="zipCode" type="string">
+            <column name="zip_code" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="radius" type="java.lang.Double">
+            <column name="radius" precision="22" scale="0" />
+        </property>
+        <property name="areaLength" type="java.lang.Double">
+            <column name="area_length" precision="22" scale="0" />
+        </property>
+        <property name="areaWidth" type="java.lang.Double">
+            <column name="area_width" precision="22" scale="0" />
+        </property>
+        <set name="customers" table="customer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="zip" length="10" not-null="true" />
+            </key>
+            <one-to-many class="model.Customer" />
+        </set>
+    </class>
+</hibernate-mapping>
